@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface InputProps {
-  isTextarea: boolean;
+  isTextarea?: boolean;
 }
 
 export const Input = styled.input<InputProps>`
