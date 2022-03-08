@@ -1,26 +1,33 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
 
-export const Wrapper = styled.nav`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid ${({ theme }) => theme.colors.darkPurple};
-  justify-content: flex-start;
-  padding: 30px 0;
-  grid-row: 1 / 3;
-  grid-column: 1 / 1;
-`;
+import { Logo, StyledLink, Wrapper } from "./navigation.styles";
+
+import DashboardIcon from "assets/icons/dashboard.png";
+import PocketIcon from "assets/icons/bitcoin-wallet.png";
+import ProfileIcon from "assets/icons/profile.png";
+import SettingsIcon from "assets/icons/admin.png";
 
 const Navigation = () => {
   return (
     <Wrapper>
-      <NavLink to="/dashboard">dashboard</NavLink>
-      <NavLink to="/pocket">pocket</NavLink>
-      <NavLink to="/profile">profile</NavLink>
-      <NavLink to="/settings">settings</NavLink>
+      <Logo>
+        <h1>
+          Crypto <br /> Pocket
+        </h1>
+      </Logo>
+
+      <StyledLink to="/dashboard">
+        <img src={DashboardIcon} alt="dashboard icon" />
+      </StyledLink>
+      <StyledLink to="/pocket">
+        <img src={PocketIcon} alt="pocket icon" />
+      </StyledLink>
+      <StyledLink to="/profile">
+        <img src={ProfileIcon} alt="profile icon" />
+      </StyledLink>
+      <StyledLink to="/settings">
+        <img src={SettingsIcon} alt="settings icon" />
+      </StyledLink>
     </Wrapper>
   );
 };

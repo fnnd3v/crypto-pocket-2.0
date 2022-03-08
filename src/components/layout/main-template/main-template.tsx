@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   padding: 0;
   display: grid;
   grid-template-rows: 90px 1fr;
-  grid-template-columns: 150px 1fr 0.35fr;
+  grid-template-columns: 90px 1fr 0.35fr;
   background-color: ${({ theme }) => theme.colors.lightGrey};
   overflow-y: hidden;
 `;
