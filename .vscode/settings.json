@@ -1,0 +1,5 @@
+{
+  "editor.cursorStyle": "block-outline",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
