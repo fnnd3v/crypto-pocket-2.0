@@ -10,20 +10,23 @@ import Dashboard from "pages/dashboard/dashboard";
 import Pocket from "pages/pocket/pocket";
 import Profile from "pages/profile/profile";
 import Settings from "pages/settings/settings";
+import SettingsProvider from "components/client/providers/SettingsProvider";
 
 const App: React.FC = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <MainTemplate>
-          <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/pocket" element={<Pocket />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/settings" element={<Settings />} />
-          </Routes>
-        </MainTemplate>
+        <SettingsProvider>
+          <MainTemplate>
+            <Routes>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/pocket" element={<Pocket />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/settings" element={<Settings />} />
+            </Routes>
+          </MainTemplate>
+        </SettingsProvider>
       </ThemeProvider>
     </Router>
   );
