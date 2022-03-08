@@ -11,6 +11,7 @@ import Pocket from "pages/pocket/pocket";
 import Profile from "pages/profile/profile";
 import Settings from "pages/settings/settings";
 import SettingsProvider from "components/client/providers/SettingsProvider";
+import CoinsProvider from "components/client/providers/CoinsProvider";
 
 const App: React.FC = () => {
   return (
@@ -18,14 +19,16 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <SettingsProvider>
-          <MainTemplate>
-            <Routes>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/pocket" element={<Pocket />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/settings" element={<Settings />} />
-            </Routes>
-          </MainTemplate>
+          <CoinsProvider>
+            <MainTemplate>
+              <Routes>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/pocket" element={<Pocket />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/settings" element={<Settings />} />
+              </Routes>
+            </MainTemplate>
+          </CoinsProvider>
         </SettingsProvider>
       </ThemeProvider>
     </Router>

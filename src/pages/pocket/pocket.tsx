@@ -1,10 +1,11 @@
+import { ViewWrapper } from "components/ui/view-wrapper/view-wrapper";
 import React from "react";
 
 const Pocket = () => {
   return (
-    <div>
+    <ViewWrapper>
       <p>pocket</p>
-    </div>
+    </ViewWrapper>
   );
 };
 

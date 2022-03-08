@@ -1,10 +1,11 @@
+import { ViewWrapper } from "components/ui/view-wrapper/view-wrapper";
 import React from "react";
 
 const Profile = () => {
   return (
-    <div>
+    <ViewWrapper>
       <p>profile</p>
-    </div>
+    </ViewWrapper>
   );
 };
 export default Profile;
