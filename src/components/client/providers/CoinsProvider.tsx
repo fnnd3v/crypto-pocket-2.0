@@ -1,28 +1,62 @@
 import { getMarket } from "api/crypto-api";
+import { MarketCoin } from "models/market.models";
 import React, { useState, useEffect } from "react";
 
 interface SettingsContextInterface {
-  market: object[];
+  market: MarketCoin[];
+  favouriteCoins: MarketCoin[];
+  toggleFavouriteCoin: (coin: MarketCoin) => void;
 }
 
 export const CoinsContext = React.createContext<SettingsContextInterface>({
   market: [],
+  favouriteCoins: [],
+  toggleFavouriteCoin: () => {},
 });
 
 const CoinsProvider: React.FC = ({ children }) => {
-  const [market, setMarket] = useState([]);
+  const [market, setMarket] = useState<MarketCoin[]>([]);
+  const [favouriteCoins, setFavouriteCoins] = useState<MarketCoin[]>([]);
 
   useEffect(() => {
     (async () => {
       const { data } = await getMarket();
-      setMarket(data);
+      setMarket(
+        data.map((coin: MarketCoin) => ({ ...coin, isFavourite: false }))
+      );
     })();
   }, []);
+
+  const toggleFavouriteCoin = (coin: MarketCoin) => {
+    if (coin.isFavourite) {
+      const favCoin = { ...coin, isFavourite: false };
+      setMarket(
+        market.map((marketCoin: MarketCoin) =>
+          marketCoin.id === coin.id
+            ? { ...marketCoin, isFavourite: false }
+            : marketCoin
+        )
+      );
+      setFavouriteCoins([...favouriteCoins, favCoin]);
+    } else {
+      const favCoin = { ...coin, isFavourite: true };
+      setMarket(
+        market.map((marketCoin: MarketCoin) =>
+          marketCoin.id === coin.id
+            ? { ...marketCoin, isFavourite: true }
+            : marketCoin
+        )
+      );
+      setFavouriteCoins([...favouriteCoins, favCoin]);
+    }
+  };
 
   return (
     <CoinsContext.Provider
       value={{
         market,
+        favouriteCoins,
+        toggleFavouriteCoin,
       }}
     >
       {children}

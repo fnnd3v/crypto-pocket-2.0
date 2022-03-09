@@ -1,25 +1,10 @@
 import { CoinsContext } from "components/client/providers/CoinsProvider";
+import Loading from "components/ui/loading/loading";
 import { Title } from "components/ui/title/title";
 import { ViewWrapper } from "components/ui/view-wrapper/view-wrapper";
 import React, { useContext } from "react";
-import styled from "styled-components";
 import CoinHandler from "./coin-handler";
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
-const PanelWrapper = styled.div`
-  height: 20%;
-  width: 100%;
-`;
-
-const ContentWrapper = styled.div`
-  width: 100%;
-  height: 80%;
-  overflow-y: scroll;
-`;
+import { ContentWrapper, PanelWrapper, Wrapper } from "./dashboard.styles";
 
 const Dashboard: React.FC = () => {
   const { market } = useContext(CoinsContext);
@@ -31,9 +16,11 @@ const Dashboard: React.FC = () => {
           <Title>Dashboard</Title>
         </PanelWrapper>
         <ContentWrapper>
-          {market.map((coin, index) => {
-            return <CoinHandler key={index} coin={coin} />;
-          })}
+          {market.length > 0 ? (
+            market.map((coin) => <CoinHandler key={coin.id} coin={coin} />)
+          ) : (
+            <Loading />
+          )}
         </ContentWrapper>
       </Wrapper>
     </ViewWrapper>
