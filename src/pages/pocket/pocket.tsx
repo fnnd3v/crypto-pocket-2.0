@@ -1,7 +1,8 @@
+import Modal from "components/modals/modal";
+import useModal from "components/modals/useModal";
 import { Button } from "components/ui/button/button";
 import { Title } from "components/ui/title/title";
 import { ViewWrapper } from "components/ui/view-wrapper/view-wrapper";
-import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -37,13 +38,15 @@ const DetailsWrapper = styled.div`
 `;
 
 const Pocket = () => {
+  const { isOpen, handleOpenModal, handleCloseModal } = useModal();
+
   return (
     <ViewWrapper>
       <Wrapper>
         <ManageWrapper>
           <Title>Pocket</Title>
           <ButtonsWrapper>
-            <Button>add</Button>
+            <Button onClick={handleOpenModal}>add</Button>
             <Button>sad</Button>
           </ButtonsWrapper>
           <DetailsWrapper>
@@ -53,6 +56,12 @@ const Pocket = () => {
         </ManageWrapper>
         <ContentWrapper></ContentWrapper>
       </Wrapper>
+
+      {isOpen ? (
+        <Modal handleClose={handleCloseModal}>
+          <p>chuj 123</p>
+        </Modal>
+      ) : null}
     </ViewWrapper>
   );
 };

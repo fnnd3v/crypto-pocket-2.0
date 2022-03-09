@@ -41,5 +41,6 @@ export const StyledLink = styled(NavLink)`
 
   img {
     height: 70%;
+    max-height: 40px;
   }
 `;

@@ -18,16 +18,18 @@ export const Wrapper = styled.div`
   align-items: center;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.darkGrey};
+  font-weight: bold;
 `;
 
 export const RankP = styled.div`
+  width: 1%;
   margin-right: 20px;
 `;
 export const NameP = styled.p`
   width: 20%;
-  font-weight: bold;
 `;
 export const SymbolP = styled.p`
+  text-transform: uppercase;
   width: 10%;
 `;
 export const PriceP = styled.p`
@@ -38,7 +40,7 @@ export const PriceP = styled.p`
 export const PriceChangeP = styled.p<StyledProps>`
   color: ${({ value, theme }) =>
     value > 0 ? theme.colors.success : theme.colors.error};
-  font-weight: bold;
+
   text-align: right;
   width: 20%;
 `;
@@ -53,7 +55,8 @@ export const ImgDiv = styled.div`
 `;
 
 export const FavouriteBox = styled.div`
-  height: 50%;
+  z-index: 999;
+  height: 35%;
   display: flex;
   justify-content: center;
   align-items: center;

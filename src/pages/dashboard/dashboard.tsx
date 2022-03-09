@@ -9,7 +9,6 @@ import { ContentWrapper, PanelWrapper, Wrapper } from "./dashboard.styles";
 
 const Dashboard: React.FC = () => {
   const { market } = useContext(CoinsContext);
-  console.log(market);
 
   return (
     <ViewWrapper>
