@@ -36,6 +36,7 @@ const CoinHandler: React.FC<CoinHandlerProps> = ({
 
   return (
     <Wrapper>
+      <RankP>{rank}.</RankP>
       <FavouriteBox onClick={() => toggleFavouriteCoin(coin)}>
         {isFavourite ? (
           <img src={FavIcon} alt="fav icon" />
@@ -43,14 +44,15 @@ const CoinHandler: React.FC<CoinHandlerProps> = ({
           <img src={FavIconBlack} alt="un fav icon" />
         )}
       </FavouriteBox>
-      <RankP>{rank}.</RankP>
       <ImgDiv>
         <img src={image} alt="coin img" />
       </ImgDiv>
       <NameP>{name}</NameP>
       <SymbolP>{symbol}</SymbolP>
       <PriceP>{price.toFixed(2)} $</PriceP>
-      <PriceChangeP>{priceChange.toFixed(2)} %</PriceChangeP>
+      <PriceChangeP value={priceChange}>
+        {priceChange.toFixed(2)} %
+      </PriceChangeP>
     </Wrapper>
   );
 };

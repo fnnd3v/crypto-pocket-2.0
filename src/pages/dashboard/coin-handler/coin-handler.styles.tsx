@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface StyledProps {
+  value: number;
+}
+
 export const Wrapper = styled.div`
   width: 95%;
   background-color: ${({ theme }) => theme.colors.lightPurple};
@@ -13,10 +17,10 @@ export const Wrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
 export const RankP = styled.div`
-  width: 1%;
   margin-right: 20px;
 `;
 export const NameP = styled.p`
@@ -31,7 +35,10 @@ export const PriceP = styled.p`
   text-align: right;
 `;
 
-export const PriceChangeP = styled.p`
+export const PriceChangeP = styled.p<StyledProps>`
+  color: ${({ value, theme }) =>
+    value > 0 ? theme.colors.success : theme.colors.error};
+  font-weight: bold;
   text-align: right;
   width: 20%;
 `;
