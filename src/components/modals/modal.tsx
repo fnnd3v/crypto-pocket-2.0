@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import { Button } from "components/ui/button/button";
 
-import { ModalWrapper } from "./modal.styles";
+import { ModalContent, ModalWrapper } from "./modal.styles";
 
 export interface ModalProps {
   handleClose: () => void;
@@ -23,10 +23,12 @@ const Modal: React.FC<ModalProps> = ({ handleClose, children }) => {
   }, [div]);
 
   return ReactDOM.createPortal(
-    <ModalWrapper>
-      {children}
-      <Button onClick={handleClose}>Close</Button>
-    </ModalWrapper>,
+    <ModalContent>
+      <ModalWrapper>
+        {children}
+        <Button onClick={handleClose}>Close</Button>
+      </ModalWrapper>
+    </ModalContent>,
     div
   );
 };

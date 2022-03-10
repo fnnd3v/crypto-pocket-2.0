@@ -14,8 +14,18 @@ export const ModalWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  padding: 10px;
   opacity: 1;
   &:focus {
     outline: none;
   }
+`;
+
+export const ModalContent = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100vw;
+  height: 100vh;
 `;

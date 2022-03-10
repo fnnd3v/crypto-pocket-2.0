@@ -1,5 +1,6 @@
-import { getMarket } from "api/crypto-api";
+import { getMarket, searchCoin } from "api/crypto-api";
 import { MarketCoin } from "models/market.models";
+import { SearchCoins } from "models/search.models";
 import React, { useState, useEffect } from "react";
 
 interface SettingsContextInterface {
