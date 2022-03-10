@@ -16,4 +16,9 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.darkGrey};
+  transition: background-color 0.3s ease-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.darkPurple};
+  }
 `;

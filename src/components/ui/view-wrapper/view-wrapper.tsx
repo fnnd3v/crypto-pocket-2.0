@@ -10,6 +10,6 @@ export const ViewWrapper = styled.div`
   overflow: hidden;
   padding: 30px;
   border-radius: 25px;
-  box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.5);
   position: relative;
 `;

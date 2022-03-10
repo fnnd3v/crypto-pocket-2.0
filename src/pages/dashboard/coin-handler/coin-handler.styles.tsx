@@ -7,7 +7,7 @@ interface StyledProps {
 export const Wrapper = styled.div`
   width: 95%;
   background-color: ${({ theme }) => theme.colors.lightPurple};
-  border: 1px solid ${({ theme }) => theme.colors.darkPurple};
+  /* border: 1px solid ${({ theme }) => theme.colors.darkPurple}; */
   box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   margin: 10px auto;

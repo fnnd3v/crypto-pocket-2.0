@@ -6,6 +6,7 @@ import { Title } from "components/ui/title/title";
 import { ViewWrapper } from "components/ui/view-wrapper/view-wrapper";
 import CoinHandler from "./coin-handler/coin-handler";
 import { ContentWrapper, PanelWrapper, Wrapper } from "./dashboard.styles";
+import { useParams } from "react-router-dom";
 
 const Dashboard: React.FC = () => {
   const { market } = useContext(CoinsContext);

@@ -2,7 +2,13 @@ import React from "react";
 
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "assets/styles/global-style";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+  useLocation,
+} from "react-router-dom";
 
 import { theme } from "assets/styles/theme";
 import MainTemplate from "components/layout/main-template/main-template";
@@ -24,7 +30,7 @@ const App: React.FC = () => {
             <PocketProvider>
               <MainTemplate>
                 <Routes>
-                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/dashboard/" element={<Dashboard />} />
                   <Route path="/pocket" element={<Pocket />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/settings" element={<Settings />} />
