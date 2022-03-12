@@ -38,7 +38,11 @@ const CoinsProvider: React.FC = ({ children }) => {
             : marketCoin
         )
       );
-      setFavouriteCoins([...favouriteCoins, favCoin]);
+
+      const filteredCoins = favouriteCoins.filter(
+        (coinToDelete) => coinToDelete.id !== coin.id
+      );
+      setFavouriteCoins(filteredCoins);
     } else {
       const favCoin = { ...coin, isFavourite: true };
       setMarket(

@@ -15,6 +15,7 @@ export const ModalWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 10px;
+
   opacity: 1;
   &:focus {
     outline: none;
@@ -28,4 +29,5 @@ export const ModalContent = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   width: 100vw;
   height: 100vh;
+  z-index: 999999;
 `;

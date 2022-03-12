@@ -9,6 +9,7 @@ import { ContentWrapper, PanelWrapper, Wrapper } from "./dashboard.styles";
 import { useParams } from "react-router-dom";
 
 const Dashboard: React.FC = () => {
+  //FIXME: market rank
   const { market } = useContext(CoinsContext);
 
   return (

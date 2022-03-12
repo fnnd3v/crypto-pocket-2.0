@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Navigation from "components/layout/navigation/navigation";
 import SearchBar from "../search-bar/search-bar";
 import Section from "../section/section";
+import NotesWidget from "../notes-widget/notes-widget";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -15,6 +16,7 @@ export const Wrapper = styled.div`
   grid-template-columns: 90px 1fr 0.35fr;
   background-color: ${({ theme }) => theme.colors.lightGrey};
   overflow-y: hidden;
+  position: relative;
 `;
 
 const MainTemplate: React.FC = ({ children }) => {
@@ -24,6 +26,7 @@ const MainTemplate: React.FC = ({ children }) => {
       <SearchBar />
       <Section />
       {children}
+      <NotesWidget />
     </Wrapper>
   );
 };

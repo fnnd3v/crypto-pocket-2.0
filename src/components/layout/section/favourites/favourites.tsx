@@ -26,12 +26,12 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   height: 100%;
   overflow-y: scroll;
+  padding-top: 10px;
 `;
 
 const Favourites: React.FC = () => {
+  //FIXME:: coin image
   const { favouriteCoins } = useContext(CoinsContext);
-
-  console.log(favouriteCoins);
 
   return (
     <Wrapper>

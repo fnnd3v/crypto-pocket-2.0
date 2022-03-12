@@ -11,9 +11,8 @@ import {
   SearchBarWrapper,
 } from "./search-bar.styles";
 
-//TODO: add combobox
-
 const SearchBar = () => {
+  //TODO: add combobox and coins to fav
   const [searchingValue, setSearchingValue] = useState<string>("");
   const [matchingCoins, setMatchingCoins] = useState<SearchCoins[]>([]);
 

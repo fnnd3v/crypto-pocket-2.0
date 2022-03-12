@@ -1,4 +1,6 @@
 import React from "react";
+import { store } from "store";
+import { Provider } from "react-redux";
 
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "assets/styles/global-style";
@@ -22,25 +24,27 @@ import PocketProvider from "components/client/providers/PocketProvider";
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <SettingsProvider>
-          <CoinsProvider>
-            <PocketProvider>
-              <MainTemplate>
-                <Routes>
-                  <Route path="/dashboard/" element={<Dashboard />} />
-                  <Route path="/pocket" element={<Pocket />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/settings" element={<Settings />} />
-                </Routes>
-              </MainTemplate>
-            </PocketProvider>
-          </CoinsProvider>
-        </SettingsProvider>
-      </ThemeProvider>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <SettingsProvider>
+            <CoinsProvider>
+              <PocketProvider>
+                <MainTemplate>
+                  <Routes>
+                    <Route path="/dashboard/" element={<Dashboard />} />
+                    <Route path="/pocket" element={<Pocket />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/settings" element={<Settings />} />
+                  </Routes>
+                </MainTemplate>
+              </PocketProvider>
+            </CoinsProvider>
+          </SettingsProvider>
+        </ThemeProvider>
+      </Router>
+    </Provider>
   );
 };
 

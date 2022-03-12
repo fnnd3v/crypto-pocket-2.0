@@ -37,7 +37,7 @@ export const ContentWrapper = styled.ul`
   padding: 20px;
   list-style: none;
   overflow-y: scroll;
-  z-index: 9999;
+  z-index: 999999999999999;
   max-height: 400px;
   top: 80%;
   background-color: ${({ theme }) => theme.colors.lightPurple};

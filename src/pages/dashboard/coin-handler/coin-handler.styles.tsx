@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
 `;
 
 export const RankP = styled.div`
-  width: 1%;
+  width: 3%;
   margin-right: 20px;
 `;
 export const NameP = styled.p`
