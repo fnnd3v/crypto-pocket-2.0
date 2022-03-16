@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+
 import SelectCoin from "./select-coin/select-coin";
 import TransactionDetails from "./transaction-details/transaction-details";
 
-const Wrapper = styled.div`
-  padding: 10px;
-  width: 100%;
-  height: 90%;
-`;
+import { Wrapper } from "./coin-panel.styles";
 
 const CoinPanel: React.FC<any> = ({ handleCloseModal }) => {
   const [selectedCoin, setSelectedCoin] = useState(null);

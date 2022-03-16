@@ -1,40 +1,23 @@
+import React, { useContext } from "react";
+
 import { CoinsContext } from "components/client/providers/CoinsProvider";
 import { Title } from "components/ui/title/title";
-import React, { useContext } from "react";
-import styled from "styled-components";
 import FavouriteCoinItem from "./favourite-coin-item/favourite-coin-item";
 
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+import { ContentWrapper, HeaderWrapper, Wrapper } from "./favourites.styles";
 
-  ${Title} {
-    width: 90%;
-  }
-`;
-
-const ContentWrapper = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.colors.darkPurple};
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  flex-direction: column;
-  height: 100%;
-  overflow-y: scroll;
-  padding-top: 10px;
-`;
+import FavouriteIcon from "assets/icons/favorite.png";
 
 const Favourites: React.FC = () => {
   const { favouriteCoins } = useContext(CoinsContext);
 
   return (
     <Wrapper>
-      <Title>Favourites</Title>
+      <HeaderWrapper>
+        <Title>Favourites</Title>
+        <img src={FavouriteIcon} />
+      </HeaderWrapper>
+
       <ContentWrapper>
         {favouriteCoins.map((coin) => (
           <FavouriteCoinItem key={coin.id} coin={coin} />

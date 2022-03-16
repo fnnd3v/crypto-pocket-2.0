@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import AddTransactionIcon from "assets/icons/add.png";
-import RemoveTransactionIcon from "assets/icons/remove.png";
+
+import Modal from "components/modals/modal";
+import useModal from "components/modals/useModal";
+import TransactionModalWrapper from "./transaction-modal-wrapper/transaction-modal-wrapper";
+import { PocketContext } from "components/client/providers/PocketProvider";
+
 import {
   ButtonsWrapper,
   CurrentPriceP,
@@ -11,10 +15,9 @@ import {
   ProfitLossP,
   Wrapper,
 } from "./transaction-wrapper.styles";
-import Modal from "components/modals/modal";
-import useModal from "components/modals/useModal";
-import TransactionModalWrapper from "./transaction-modal-wrapper/transaction-modal-wrapper";
-import { PocketContext } from "components/client/providers/PocketProvider";
+
+import AddTransactionIcon from "assets/icons/add.png";
+import RemoveTransactionIcon from "assets/icons/remove.png";
 
 const TransactionWrapper: React.FC<any> = ({
   transaction,

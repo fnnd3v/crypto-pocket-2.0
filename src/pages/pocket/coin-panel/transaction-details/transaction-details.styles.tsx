@@ -1,6 +1,7 @@
+import styled from "styled-components";
+
 import { Button } from "components/ui/button/button";
 import { Title } from "components/ui/title/title";
-import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;

@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 
+import FavIconBlack from "assets/icons/favourite-black.png";
+import FavIcon from "assets/icons/favourite.png";
+import useModal from "components/modals/useModal";
+import Modal from "components/modals/modal";
 import { MarketCoin } from "models/market.models";
 import { CoinsContext } from "components/client/providers/CoinsProvider";
+
 import {
   FavouriteBox,
   ImgDiv,
@@ -12,11 +17,6 @@ import {
   SymbolP,
   Wrapper,
 } from "./coin-handler.styles";
-
-import FavIconBlack from "assets/icons/favourite-black.png";
-import FavIcon from "assets/icons/favourite.png";
-import useModal from "components/modals/useModal";
-import Modal from "components/modals/modal";
 
 interface CoinHandlerProps {
   coin: MarketCoin;

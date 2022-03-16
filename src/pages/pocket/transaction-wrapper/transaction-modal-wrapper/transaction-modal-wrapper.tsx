@@ -1,25 +1,14 @@
-import { Title } from "components/ui/title/title";
 import React from "react";
-import styled from "styled-components";
 
-const Wrapper = styled.div`
-  width: 800px;
-  height: 100%;
-`;
-const StatisticsWrapper = styled.div`
-  width: 100%;
-  height: 30%;
-  background-color: red;
-  display: flex;
+import { Title } from "components/ui/title/title";
+import { Wrapper } from "../transaction-wrapper.styles";
+import TransactionModalItem from "./transaction-modal-item/transaction-modal-item";
 
-  img {
-    height: 40px;
-  }
-`;
-const TransactionsWrapper = styled.ul`
-  width: 100%;
-  height: 70%;
-`;
+import {
+  MapWrapper,
+  StatisticsWrapper,
+  TransactionsWrapper,
+} from "./transaction-modal-wrapper.styles";
 
 const TransactionModalWrapper: React.FC<any> = ({
   transaction,
@@ -29,8 +18,6 @@ const TransactionModalWrapper: React.FC<any> = ({
   //avg buy price
   //transactions
   //current price
-
-  console.log(transaction);
 
   return (
     <Wrapper>
@@ -46,11 +33,18 @@ const TransactionModalWrapper: React.FC<any> = ({
         <button>add transaction</button>
       </StatisticsWrapper>
       <TransactionsWrapper>
+        <MapWrapper>
+          <p>transaction type</p>
+          <p>price</p>
+          <p>amount</p>
+          <p>buttons</p>
+        </MapWrapper>
         {transactions.map((singleTransaction: any) => {
           return (
-            <li key={singleTransaction.transactionID}>
-              {singleTransaction.quantity}
-            </li>
+            <TransactionModalItem
+              key={singleTransaction.transactionID}
+              transaction={singleTransaction}
+            />
           );
         })}
       </TransactionsWrapper>

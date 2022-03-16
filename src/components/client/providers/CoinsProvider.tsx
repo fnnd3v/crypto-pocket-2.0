@@ -1,6 +1,10 @@
-import { getMarket, getTrendingCoins, searchCoin } from "api/crypto-api";
+import {
+  getExchanges,
+  getGlobalData,
+  getMarket,
+  getTrendingCoins,
+} from "api/crypto-api";
 import { MarketCoin } from "models/market.models";
-import { SearchCoins } from "models/search.models";
 import React, { useState, useEffect } from "react";
 
 interface SettingsContextInterface {
@@ -8,6 +12,8 @@ interface SettingsContextInterface {
   favouriteCoins: MarketCoin[];
   toggleFavouriteCoin: (coin: MarketCoin) => void;
   trendingCoins: any[];
+  exchangesList: any[];
+  globalData: any;
 }
 
 export const CoinsContext = React.createContext<SettingsContextInterface>({
@@ -15,12 +21,16 @@ export const CoinsContext = React.createContext<SettingsContextInterface>({
   favouriteCoins: [],
   toggleFavouriteCoin: () => {},
   trendingCoins: [],
+  exchangesList: [],
+  globalData: {},
 });
 
 const CoinsProvider: React.FC = ({ children }) => {
   const [market, setMarket] = useState<MarketCoin[]>([]);
   const [favouriteCoins, setFavouriteCoins] = useState<MarketCoin[]>([]);
   const [trendingCoins, setTrendingCoins] = useState<any>([]);
+  const [exchangesList, setExchangesList] = useState<any>([]);
+  const [globalData, setGlobalData] = useState<any>([]);
 
   useEffect(() => {
     (async () => {
@@ -39,6 +49,26 @@ const CoinsProvider: React.FC = ({ children }) => {
   const fetchTrendingCoins = async () => {
     const { data } = await getTrendingCoins();
     setTrendingCoins(data.coins);
+  };
+
+  //get exchanges
+  useEffect(() => {
+    fetchExchanges();
+  }, []);
+
+  const fetchExchanges = async () => {
+    const { data } = await getExchanges();
+    setExchangesList(data);
+  };
+
+  //get global data
+  useEffect(() => {
+    fetchGlobalData();
+  }, []);
+
+  const fetchGlobalData = async () => {
+    const { data } = await getGlobalData();
+    setGlobalData(data.data);
   };
 
   const toggleFavouriteCoin = (coin: MarketCoin) => {
@@ -76,6 +106,8 @@ const CoinsProvider: React.FC = ({ children }) => {
         favouriteCoins,
         toggleFavouriteCoin,
         trendingCoins,
+        exchangesList,
+        globalData,
       }}
     >
       {children}

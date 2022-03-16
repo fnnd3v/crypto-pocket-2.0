@@ -15,3 +15,9 @@ export const searchCoin = async (coin: string) =>
 
 export const getTrendingCoins = async () =>
   await axios.get("https://api.coingecko.com/api/v3/search/trending");
+
+export const getExchanges = async () =>
+  await axios.get("https://api.coingecko.com/api/v3/exchanges?per_page=10");
+
+export const getGlobalData = async () =>
+  await axios.get("https://api.coingecko.com/api/v3/global");

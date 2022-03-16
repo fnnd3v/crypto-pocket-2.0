@@ -1,8 +1,15 @@
-import Modal from "components/modals/modal";
+import { useContext } from "react";
+import { useSelector } from "react-redux";
+
+import { PocketContext } from "components/client/providers/PocketProvider";
 import useModal from "components/modals/useModal";
+import Modal from "components/modals/modal";
 import { Button } from "components/ui/button/button";
 import { Title } from "components/ui/title/title";
 import { ViewWrapper } from "components/ui/view-wrapper/view-wrapper";
+import TransactionWrapper from "./transaction-wrapper/transaction-wrapper";
+import CoinPanel from "./coin-panel/coin-panel";
+
 import {
   ButtonsWrapper,
   ContentWrapper,
@@ -10,12 +17,6 @@ import {
   ManageWrapper,
   Wrapper,
 } from "./pocket.styles";
-
-import { useSelector } from "react-redux";
-import CoinPanel from "./coin-panel/coin-panel";
-import TransactionWrapper from "./transaction-wrapper/transaction-wrapper";
-import { useContext, useState } from "react";
-import { PocketContext } from "components/client/providers/PocketProvider";
 
 const Pocket = () => {
   const transactionsState = useSelector((state: any) => state.transactions);

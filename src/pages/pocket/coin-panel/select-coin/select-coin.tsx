@@ -1,10 +1,12 @@
+import React, { useContext, useEffect, useState } from "react";
 import { searchCoin } from "api/crypto-api";
+import debounce from "lodash.debounce";
+
 import { PocketContext } from "components/client/providers/PocketProvider";
 import { Input } from "components/ui/input/input";
 import Loading from "components/ui/loading/loading";
 import { Title } from "components/ui/title/title";
-import React, { useContext, useEffect, useState } from "react";
-import debounce from "lodash.debounce";
+
 import { ContentWrapper, Wrapper } from "./select-coin.styles";
 
 const SelectCoin: React.FC<any> = ({ setSelectedCoin }) => {
