@@ -21,6 +21,8 @@ import {
 const Pocket = () => {
   const transactionsState = useSelector((state: any) => state.transactions);
   const { isOpen, handleOpenModal, handleCloseModal } = useModal();
+
+  //FIXME: total profit calc value
   const { totalProfitLoss } = useContext(PocketContext);
 
   //TODO: add react hook form

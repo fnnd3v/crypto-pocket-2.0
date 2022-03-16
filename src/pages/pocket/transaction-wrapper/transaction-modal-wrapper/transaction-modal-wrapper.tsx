@@ -1,13 +1,13 @@
 import React from "react";
 
 import { Title } from "components/ui/title/title";
-import { Wrapper } from "../transaction-wrapper.styles";
 import TransactionModalItem from "./transaction-modal-item/transaction-modal-item";
 
 import {
   MapWrapper,
   StatisticsWrapper,
   TransactionsWrapper,
+  Wrapper,
 } from "./transaction-modal-wrapper.styles";
 
 const TransactionModalWrapper: React.FC<any> = ({
