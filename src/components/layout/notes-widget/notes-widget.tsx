@@ -34,6 +34,7 @@ const NotesWrapper = styled.div`
 `;
 
 const NotesWidget = () => {
+  //FIXME: click and overflow
   const [isOpen, setIsOpen] = useState(false);
   const nodeRef = useRef(null);
 

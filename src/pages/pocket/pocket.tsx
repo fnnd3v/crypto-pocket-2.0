@@ -11,26 +11,16 @@ import {
   Wrapper,
 } from "./pocket.styles";
 
-import { addTransaction } from "store";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import CoinPanel from "./coin-panel/coin-panel";
+import TransactionWrapper from "./transaction-wrapper/transaction-wrapper";
+import { useContext, useState } from "react";
+import { PocketContext } from "components/client/providers/PocketProvider";
 
 const Pocket = () => {
   const transactionsState = useSelector((state: any) => state.transactions);
-  const dispatch = useDispatch();
   const { isOpen, handleOpenModal, handleCloseModal } = useModal();
-
-  const handleAddTransaction = () => {
-    dispatch(
-      addTransaction({
-        id: "bitcoin",
-        transactionProperty: {
-          value: 11230,
-          quantity: 1312,
-          currentPrice: 51234,
-        },
-      })
-    );
-  };
+  const { totalProfitLoss } = useContext(PocketContext);
 
   //TODO: add react hook form
   return (
@@ -40,19 +30,38 @@ const Pocket = () => {
           <Title>Pocket</Title>
           <ButtonsWrapper>
             <Button onClick={handleOpenModal}>add</Button>
-            <Button onClick={handleAddTransaction}>sad</Button>
+            <Button>sad</Button>
           </ButtonsWrapper>
           <DetailsWrapper>
-            <p onClick={() => console.log(transactionsState)}>total</p>
-            <p>profit loss</p>
+            <p onClick={() => console.log(transactionsState)}>
+              total: <span> /// </span>
+            </p>
+            <p>
+              profit loss: <span> {totalProfitLoss.toLocaleString()} </span>
+            </p>
           </DetailsWrapper>
         </ManageWrapper>
-        <ContentWrapper></ContentWrapper>
+        <ContentWrapper>
+          {transactionsState.length === 0 ? (
+            <p>add your first transaction</p>
+          ) : (
+            transactionsState.map((transaction: any) => {
+              return (
+                <TransactionWrapper
+                  transaction={transaction}
+                  key={transaction.id}
+                >
+                  {transaction.symbol}
+                </TransactionWrapper>
+              );
+            })
+          )}
+        </ContentWrapper>
       </Wrapper>
 
       {isOpen ? (
         <Modal handleClose={handleCloseModal}>
-          <p>chuj 123</p>
+          <CoinPanel handleCloseModal={handleCloseModal} />
         </Modal>
       ) : null}
     </ViewWrapper>

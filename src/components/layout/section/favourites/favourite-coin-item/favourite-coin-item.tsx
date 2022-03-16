@@ -27,7 +27,7 @@ interface StyledProps {
 }
 
 const LogoImg = styled.img`
-  width: 20%;
+  height: 100%;
   margin-right: 10px;
 `;
 

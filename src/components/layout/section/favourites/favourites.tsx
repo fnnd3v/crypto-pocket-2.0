@@ -30,7 +30,6 @@ const ContentWrapper = styled.div`
 `;
 
 const Favourites: React.FC = () => {
-  //FIXME:: coin image
   const { favouriteCoins } = useContext(CoinsContext);
 
   return (

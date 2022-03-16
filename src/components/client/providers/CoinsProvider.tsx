@@ -1,4 +1,4 @@
-import { getMarket, searchCoin } from "api/crypto-api";
+import { getMarket, getTrendingCoins, searchCoin } from "api/crypto-api";
 import { MarketCoin } from "models/market.models";
 import { SearchCoins } from "models/search.models";
 import React, { useState, useEffect } from "react";
@@ -7,17 +7,20 @@ interface SettingsContextInterface {
   market: MarketCoin[];
   favouriteCoins: MarketCoin[];
   toggleFavouriteCoin: (coin: MarketCoin) => void;
+  trendingCoins: any[];
 }
 
 export const CoinsContext = React.createContext<SettingsContextInterface>({
   market: [],
   favouriteCoins: [],
   toggleFavouriteCoin: () => {},
+  trendingCoins: [],
 });
 
 const CoinsProvider: React.FC = ({ children }) => {
   const [market, setMarket] = useState<MarketCoin[]>([]);
   const [favouriteCoins, setFavouriteCoins] = useState<MarketCoin[]>([]);
+  const [trendingCoins, setTrendingCoins] = useState<any>([]);
 
   useEffect(() => {
     (async () => {
@@ -27,6 +30,16 @@ const CoinsProvider: React.FC = ({ children }) => {
       );
     })();
   }, []);
+
+  // get trending coins
+  useEffect(() => {
+    fetchTrendingCoins();
+  }, []);
+
+  const fetchTrendingCoins = async () => {
+    const { data } = await getTrendingCoins();
+    setTrendingCoins(data.coins);
+  };
 
   const toggleFavouriteCoin = (coin: MarketCoin) => {
     if (coin.isFavourite) {
@@ -62,6 +75,7 @@ const CoinsProvider: React.FC = ({ children }) => {
         market,
         favouriteCoins,
         toggleFavouriteCoin,
+        trendingCoins,
       }}
     >
       {children}

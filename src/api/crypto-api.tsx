@@ -12,3 +12,6 @@ export const getMarket = async () =>
 
 export const searchCoin = async (coin: string) =>
   await axios.get(`https://api.coingecko.com/api/v3/search?query=${coin}`);
+
+export const getTrendingCoins = async () =>
+  await axios.get("https://api.coingecko.com/api/v3/search/trending");

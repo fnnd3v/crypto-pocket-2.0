@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { Button } from "components/ui/button/button";
@@ -7,6 +7,7 @@ import Favourites from "./favourites/favourites";
 import Exchanges from "./exchanges/exchanges";
 import Trending from "./trending/trending";
 import Global from "./global/global";
+import { CoinsContext } from "components/client/providers/CoinsProvider";
 
 export const Wrapper = styled.div`
   grid-row: 1 / 3;
@@ -46,12 +47,17 @@ const ContentWrapper = styled.div`
 const Section = () => {
   //TODO: NAVIGATION
   const [activeSection, setActiveSection] = useState<string>("favourites");
+  const { favouriteCoins } = useContext(CoinsContext);
 
   const handleChangeSection = (e: any) => {
     const section = e.target.dataset.section;
     if (section === activeSection) return;
     setActiveSection(section);
   };
+
+  useEffect(() => {
+    if (favouriteCoins.length === 0) setActiveSection("trending");
+  }, []);
 
   const returnSection = () => {
     switch (activeSection) {
