@@ -119,7 +119,12 @@ const TransactionWrapper: React.FC<any> = ({
 
       {isOpen ? (
         <Modal handleClose={handleCloseModal}>
-          <TransactionModalWrapper transaction={transaction} />
+          <TransactionModalWrapper
+            totalHoldingQuantity={totalHoldingQuantity}
+            transaction={transaction}
+            profitLoss={profitLoss}
+            totalHoldingQuantityValue={totalHoldingQuantityValue}
+          />
         </Modal>
       ) : null}
     </>

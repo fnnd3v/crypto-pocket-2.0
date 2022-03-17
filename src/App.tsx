@@ -8,8 +8,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useParams,
-  useLocation,
+  Navigate,
 } from "react-router-dom";
 
 import { theme } from "assets/styles/theme";
@@ -33,6 +32,7 @@ const App: React.FC = () => {
               <PocketProvider>
                 <MainTemplate>
                   <Routes>
+                    <Route path="*" element={<Navigate to="/dashboard" />} />
                     <Route path="/dashboard/" element={<Dashboard />} />
                     <Route path="/pocket" element={<Pocket />} />
                     <Route path="/profile" element={<Profile />} />

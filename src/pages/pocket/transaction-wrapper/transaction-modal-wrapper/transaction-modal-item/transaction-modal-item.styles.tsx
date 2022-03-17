@@ -10,6 +10,11 @@ export const Wrapper = styled.li`
   background-color: ${({ theme }) => theme.colors.lightPurple};
   border-radius: 16px;
   box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.5);
+
+  img {
+    height: 50%;
+    cursor: pointer;
+  }
 `;
 
 export const TransactionTypeP = styled.p`
